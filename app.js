@@ -49,19 +49,58 @@ function makePopupContent(place) {
 }
 
 function fillFeedbackForm(locationName) {
-    // Debugging: Check if locationName is correct
     console.log("Selected Location:", locationName);
-    
-    // Store selected location in localStorage
-    localStorage.setItem("location", locationName);
 
-    // Retrieve stored details for debugging
-    console.log("Location Stored:", localStorage.getItem("location"));
-    console.log("Date Stored:", localStorage.getItem("date"));
+    // Find the selected place from placeList
+    const selectedPlace = placeList.find(place => place.properties.name === locationName);
 
-    // Redirect to the corresponding form
-    window.location.href = "feedback_parking_area.html"; // Change dynamically if needed
+    if (selectedPlace) {
+        const formUrl = selectedPlace.properties.formUrl; // Get the correct form URL
+
+        // Store location in localStorage
+        localStorage.setItem("selectedLocation", locationName);
+        
+        // Store feedback date if not already set
+        if (!localStorage.getItem("feedbackDate")) {
+            localStorage.setItem("feedbackDate", new Date().toISOString().split("T")[0]);
+        }
+
+        console.log("✅ Location Stored:", localStorage.getItem("selectedLocation"));
+        console.log("✅ Date Stored:", localStorage.getItem("feedbackDate"));
+
+        // Retrieve stakeholder details from localStorage
+        const stakeholderType = localStorage.getItem("stakeholderType") || "";
+        const academicYear = localStorage.getItem("academicYear") || "";
+        const branch = localStorage.getItem("branch") || "";
+        const specialization = localStorage.getItem("specialization") || "";
+        const date = localStorage.getItem("feedbackDate") || "";
+
+        // Send location to database immediately
+        fetch("store_location.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: `stakeholderType=${stakeholderType}&academicYear=${academicYear}&branch=${branch}&specialization=${specialization}&date=${date}&location=${locationName}`
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === "success") {
+                console.log("✅ Location saved in DB:", locationName);
+                // Redirect to the feedback form
+                window.location.href = formUrl;
+            } else {
+                alert("❌ Error saving location: " + data.message);
+            }
+        })
+        .catch(error => {
+            alert("❌ Request failed: " + error);
+        });
+    } else {
+        console.error("❌ Location not found in placeList");
+    }
 }
+
+
+
 
 
 

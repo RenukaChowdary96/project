@@ -101,13 +101,34 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            document.getElementById("stakeholderType").value = localStorage.getItem("stakeholderType") || "";
-            document.getElementById("academicYear").value = localStorage.getItem("academicYear") || "";
-            document.getElementById("branch").value = localStorage.getItem("branch") || "";
-            document.getElementById("specialization").value = localStorage.getItem("specialization") || "";
-            document.getElementById("date").value = localStorage.getItem("feedbackDate") || "";
-            document.getElementById("location").value = localStorage.getItem("selectedLocation") || "";
-        });
+    const location = localStorage.getItem("selectedLocation");
+    const date = localStorage.getItem("feedbackDate");
+
+    console.log("Stored Location:", location);
+    console.log("Stored Date:", date);
+
+    if (!location || location === "null" || location.trim() === "") {
+        alert("🚨 Missing Location! Please go back and select a location.");
+        window.location.href = "index.html";
+        return;
+    }
+
+    if (!date || date === "null" || date.trim() === "") {
+        alert("🚨 Missing Date! Please go back and try again.");
+        window.location.href = "index.html";
+        return;
+    }
+
+    document.getElementById("stakeholderType").value = localStorage.getItem("stakeholderType") || "";
+    document.getElementById("academicYear").value = localStorage.getItem("academicYear") || "";
+    document.getElementById("branch").value = localStorage.getItem("branch") || "";
+    document.getElementById("specialization").value = localStorage.getItem("specialization") || "";
+    document.getElementById("date").value = date;
+    document.getElementById("location").value = location;
+});
+
+
+
         </script>
     
 
