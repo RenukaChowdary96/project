@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feedback and Admin Login</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-image: url("mainpagelogo.jpg"); /* Correct relative path to your background image */
+        background-size: cover; /* Cover the entire page */
+        background-repeat: no-repeat; /* Prevent the image from repeating */
+        background-attachment: fixed; /* Fix the background image in place */
+        background-position: center; /* Center the background image */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .container {
+        text-align: center;
+        background: rgba(
+          255,
+          255,
+          255,
+          0.8
+        ); /* Semi-transparent white background */
+        padding: 40px; /* Increased padding */
+        border-radius: 15px; /* Slightly more rounded corners */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Larger shadow */
+        max-width: 500px; /* Limit the container width */
+        width: 90%; /* Responsive width */
+      }
+      h1 {
+        font-size: 32px;
+        color: #333;
+        margin-bottom: 30px; /* Increased margin */
+        font-weight: bold; /* Bold text */
+      }
+      .logo {
+        margin-bottom: 30px;
+      }
+      .logo img {
+        width: 250px; /* Adjust the width as needed */
+        height: auto; /* Maintain aspect ratio */
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 15px 30px;
+        font-size: 18px;
+        margin: 10px;
+        text-decoration: none;
+        color: #fff;
+        border-radius: 10px;
+        transition: background-color 0.3s ease transform 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .btn-feedback {
+        background-color: #28a745;
+      }
+      .btn-feedback:hover {
+        background-color: #218838;
+        transform: translateY(-2px); /* Slight lift effect on hover */
+      }
+      .btn-admin {
+        background-color: #007bff;
+      }
+      .btn-admin:hover {
+        background-color: #0056b3;
+        transform: translateY(-2px); /* Slight lift effect on hover */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo">
+        <img src="logo.jpeg" alt="Vignan University Logo" />
+        <!-- Replace 'vignan-logo.png' with the actual path to the logo -->
+      </div>
+      <h1>Welcome to VFSTR Feedback Portal</h1>
+      <a href="form.html" class="btn btn-feedback">Stakeholder Feedback</a>
+      <a href="admin_login.html" class="btn btn-admin">Admin Login</a>
+    </div>
+  </body>
+</html>

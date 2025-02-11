@@ -1,0 +1,163 @@
+/* Reset default styles */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    
+}
+
+/* Set body font */
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    background-color: whitesmoke;
+}
+
+/* Styles for college name */
+.colleg-name {
+    text-align: center;
+    font-size: 40px;
+}
+
+/* Styles for college status */
+.colleg-status {
+    text-align: center;
+    font-size: 20px;
+}
+
+/* Main layout with a list and map */
+main {
+    display: flex;
+}
+
+/* Styling for the place list */
+.place-list {
+    width: 20%;
+    height: 100vh;
+    overflow: auto;
+    background: whitesmoke;
+}
+
+/* Styles for the map */
+#map {
+    height: 100vh;
+    width: 80%;
+}
+
+/* Heading styles */
+.heading {
+    background:  #8AAAE5;
+    color: #FCF6F5;
+}
+
+.heading h2 {
+    padding: 1rem;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+    border-left: 0;
+    background: rgba(0, 0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background:  #8AAAE5;
+    border-radius: 0;
+}
+
+/* Place list styles */
+.place-list ul.list {
+    padding: 0 1rem;
+    list-style-type: none;
+}
+
+.place-style {
+    margin: 1rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 1rem;
+}
+
+.place-list li:last-child .place-style {
+    border: none;
+}
+
+.place-style a {
+    text-decoration: none;
+    font-size: 25px;
+    color: black;
+    font-weight: 700;
+}
+
+.place-style p {
+    font-size: 20px;
+    color: #404040;
+}
+
+/* Leaflet popup styles */
+.leaflet-popup-content-wrapper {
+    height: auto;
+    width: 26vw;
+    text-align: center;
+}
+
+.leaflet-popup-content-wrapper.leaflet-popup-content {
+    margin: 0;
+    text-align: center;
+}
+
+.leaflet-popup-content{
+    width: 300px !important ;
+}
+
+.leaflet-popup-content-wrapper h4 {
+    padding: 12px;
+    background:  #8AAAE5;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 360px;
+    margin-top: 0px;
+}
+
+.leaflet-popup-content-wrapper p {
+    padding: 0 16px;
+    font-size: 20px;
+    margin-bottom: 14px;
+}
+
+.leaflet-popup-content-wrapper img {
+    padding: 0 16px;
+    margin-bottom: 14px;
+    height: 25vh;
+    width: 25vw;
+    overflow: auto;
+    border-radius: 5%;
+}
+
+/* Button styling */
+.map-button {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.map-button:hover {
+    background-color: #45a049;
+}
+

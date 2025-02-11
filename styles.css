@@ -1,0 +1,150 @@
+/* General body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e9eef3;
+    margin: 0;
+    padding: 0;
+}
+
+/* Form container styling */
+form {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 40px;
+    border: 1px solid #cccccc;
+}
+
+/* Heading styling */
+h2 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 28px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+}
+
+/* Styling for question containers */
+.question {
+    margin-bottom: 35px;
+    padding: 20px;
+    background-color: #f7f9fc;
+    border-radius: 8px;
+    border: 1px solid #cfd8e3;
+}
+
+/* Label styling */
+.question label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #34495e;
+    font-size: 18px;
+    text-transform: capitalize;
+}
+
+/* Radio button and checkbox styling */
+.radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.radio-group input[type="radio"] {
+    margin-right: 10px;
+    margin-top: 0;
+}
+
+.radio-group label {
+    margin-right: 25px;
+    font-size: 16px;
+    color: #555;
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+}
+
+/* Custom border for radio/checkbox labels */
+.radio-group label {
+    background-color: #ecf0f1;
+    border-radius: 5px;
+    padding: 8px 12px;
+    border: 1px solid #bdc3c7;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.radio-group label:hover {
+    background-color: #d0e1f9;
+    border-color: #007bff;
+}
+
+/* Textarea styling */
+textarea {
+    width: 100%;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #cfd8e3;
+    font-size: 16px;
+    box-sizing: border-box;
+    resize: vertical;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+textarea:focus {
+    border-color: #007bff;
+    background-color: #f4f8fd;
+    outline: none;
+}
+
+/* Submit button styling */
+input[type="submit"] {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 16px 30px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    margin-top: 30px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+    transform: scale(1.03);
+}
+
+/* Adding border and color changes to radio button inputs */
+input[type="radio"] {
+    transform: scale(1.2);
+    margin-right: 8px;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    form {
+        padding: 25px;
+    }
+
+    .radio-group label {
+        margin-right: 10px;
+        font-size: 14px;
+    }
+
+    textarea {
+        font-size: 14px;
+    }
+
+    input[type="submit"] {
+        font-size: 16px;
+        padding: 14px 20px;
+    }
+}

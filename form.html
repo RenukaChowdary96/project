@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+</head>
+<body>
+
+    <form id="feedbackForm" method="POST" action="store_stakeholder.php">
+        <label for="stakeholder">Type of Stakeholder:</label>
+        <select name="stakeholderType" id="stakeholder" required>
+            <option value="" disabled selected>Select the type</option>
+            <option value="Student">Student</option>
+            <option value="Faculty">Faculty</option>
+        </select>
+
+        <label for="academic_year">Academic Year:</label>
+        <select name="academicYear" id="academic_year" required>
+            <option value="" disabled selected>Select the Academic Year</option>
+            <option value="2022-2023">2022-2023</option>
+            <option value="2023-2024">2023-2024</option>
+            <option value="2024-2025">2024-2025</option>
+        </select>
+
+        <div class="horizontal-group">
+            <select name="branch" id="branch" required>
+                <option value="" disabled selected>Select Branch</option>
+                <option value="B.Tech">B.Tech</option>
+                <option value="BCA">BCA</option>
+                <option value="BBA">BBA</option>
+                <option value="MCA">MCA</option>
+                <option value="MBA">MBA</option>
+                <option value="M.Tech">M.Tech</option>
+            </select>
+
+            <select name="specialization" id="specialization">
+                <option value="" disabled selected>Select Specialization</option>
+            </select>
+        </div>
+
+        <label for="feedback_date">Date of Feedback:</label>
+        <input type="date" id="feedback_date" name="feedbackDate" required>
+
+        <button type="submit">Set Location</button>
+    </form>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const today = new Date().toISOString().split("T")[0];
+            document.getElementById("feedback_date").value = today;
+        });
+
+        const branchSelect = document.getElementById("branch");
+        const specializationSelect = document.getElementById("specialization");
+
+        const specializations = {
+            "B.Tech": ["CSE", "IT", "ECE", "EEE", "Mechanical", "Civil", "Biotech", "Bioinformatics", "FoodTech"],
+            "BCA": ["General"],
+            "BBA": ["General"],
+            "MCA": ["General"],
+            "MBA": ["General"],
+            "M.Tech": ["General"]
+        };
+
+        function updateSpecializations() {
+            const branch = branchSelect.value;
+            const options = specializations[branch] || [];
+            specializationSelect.innerHTML = '<option value="" disabled selected>Select Specialization</option>';
+            options.forEach(spec => {
+                const option = document.createElement("option");
+                option.value = spec;
+                option.textContent = spec;
+                specializationSelect.appendChild(option);
+            });
+
+            if (options.length > 1) {
+                specializationSelect.setAttribute("required", "true");
+            } else {
+                specializationSelect.removeAttribute("required");
+            }
+        }
+
+        branchSelect.addEventListener("change", updateSpecializations);
+    </script>
+
+</body>
+</html>
