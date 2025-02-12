@@ -32,7 +32,7 @@ if (!empty($start_date) && !empty($end_date)) $query .= " AND date BETWEEN '$sta
 $result = $conn->query($query);
 
 // Data storage for chart
-$data = array_fill(1, 9, []);  // Initialize array for Questions 1-9
+$data = array_fill(1, 9, []);
 $suggestions = [];
 
 // Fetch results
@@ -48,9 +48,6 @@ if ($result->num_rows > 0) {
         }
     }
 }
-
-// Debugging: Log data to console properly
-echo "<script>console.log('Fetched Data:', " . json_encode($data, JSON_HEX_TAG) . ");</script>";
 
 $conn->close();
 ?>
@@ -73,7 +70,7 @@ $conn->close();
             console.log("Charts are loading...");
 
             <?php for ($i = 1; $i <= 9; $i++): ?>
-                <?php if (!empty($data[$i])): // Only render if data exists ?>
+                <?php if (!empty($data[$i])): ?>
                     var data<?php echo $i; ?> = google.visualization.arrayToDataTable([
                         ['Response', 'Count'],
                         <?php
@@ -84,10 +81,19 @@ $conn->close();
                         ?>
                     ]);
 
+                    var colors = {
+                        'Excellent': '#2ecc71', // Green
+                        'Good': '#3498db', // Blue
+                        'Fair': '#f1c40f', // Yellow
+                        'Poor': '#e74c3c', // Red
+                        'Neutral': '#95a5a6' // Gray (default for unknown values)
+                    };
+
                     var options<?php echo $i; ?> = {
                         title: 'Question <?php echo $i; ?> Feedback',
                         is3D: true,
                         pieSliceText: 'value',
+                        colors: Object.keys(colors).map(key => colors[key])
                     };
 
                     var chart<?php echo $i; ?> = new google.visualization.PieChart(document.getElementById('chart<?php echo $i; ?>'));
@@ -134,7 +140,17 @@ $conn->close();
 </head>
 
 <body>
-    <h2>Feedback Analysis for <?php echo htmlspecialchars($stakeholder); ?> at <?php echo htmlspecialchars($location); ?></h2>
+    <h2>
+        Feedback Analysis for 
+        <?php echo htmlspecialchars($stakeholder); ?> 
+        at <?php echo htmlspecialchars($location); ?> 
+        <?php if (!empty($branch) && !empty($specialization)) : ?>
+            in <?php echo htmlspecialchars($branch) . " - " . htmlspecialchars($specialization); ?>
+        <?php endif; ?>
+        <?php if (!empty($start_date) && !empty($end_date)) : ?>
+            from <?php echo htmlspecialchars($start_date); ?> to <?php echo htmlspecialchars($end_date); ?>
+        <?php endif; ?>
+    </h2>
 
     <div class="chart-container">
         <?php for ($i = 1; $i <= 9; $i++): ?>
