@@ -2,7 +2,8 @@
 include 'db_config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $stakeholder = $_POST['stakeholder'] ?? '';  
+    $stakeholderType = $_POST['stakeholderType'] ?? ''; // Ensure correct variable name
+
     $academic_year = $_POST['academicYear']; 
     $branch = $_POST['branch'];
     $specialization = $_POST['specialization'];
@@ -23,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Check if a record exists
     $check_sql = "SELECT id FROM feedback WHERE 
-        stakeholder='$stakeholder' 
+        stakeholder='$stakeholderType' 
         AND academic_year='$academic_year' 
         AND branch='$branch' 
         AND specialization='$specialization' 
@@ -45,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             question8 = '$question8',
             question9 = '$question9',
             question10 = '$question10'
-            WHERE stakeholder='$stakeholder' 
+            WHERE stakeholder='$stakeholderType' 
             AND academic_year='$academic_year' 
             AND branch='$branch' 
             AND specialization='$specialization' 
@@ -56,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "INSERT INTO feedback (stakeholder, academic_year, branch, specialization, date, location, 
             question1, question2, question3, question4, question5, 
             question6, question7, question8, question9, question10) 
-            VALUES ('$stakeholder', '$academic_year', '$branch', '$specialization', '$date', '$location', 
+            VALUES ('$stakeholderType', '$academic_year', '$branch', '$specialization', '$date', '$location', 
             '$question1', '$question2', '$question3', '$question4', '$question5', 
             '$question6', '$question7', '$question8', '$question9', '$question10')";
     }
