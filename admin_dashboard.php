@@ -88,17 +88,17 @@
         <label for="location">Location:</label>
         <select id="location" name="location">
             <option value="">Select Location</option>
-            <option value="Library">Library</option>
-            <option value="Parking">Parking</option>
-            <option value="Girls Hostel">Girls Hostel</option>
-            <option value="Boys Hostel">Boys Hostel</option>
-            <option value="Medicalfacility">Medical Facility</option>
-            <option value="ECELL">E-Cell</option>
-            <option value="GUESTHOUSE">Guest House</option>
-            <option value="GROUND">Ground</option>
-            <option value="BANK">Bank</option>
-            <option value="ABLOCK">A Block</option>
-            <option value="IT">IT</option>
+            <option value="NTR Library">NTR Library</option>
+            <option value="Vehicle parking">Vehicle parking</option>
+            <option value="Girls hostel">Girls Hostel</option>
+            <option value="Boys hostel">Boys hostel</option>
+            <option value="Medical Room">Medical Room</option>
+            <option value="E Cell">E Cell</option>
+            <option value="Guesthouse">Guesthouse</option>
+            <option value="Ground">Ground</option>
+            <option value="UCO Bank">Bank</option>
+            <option value="Administrative Block">Administrative Block</option>
+            <option value="IT Department">IT Department</option>
         </select>
 
         <label for="academic_year">Academic Year</label>
@@ -138,7 +138,8 @@
         const specializationOptions = {
             "B.Tech": ["CSE", "IT", "EEE", "ECE", "Mechanical", "Robotics", "Biotechnology", "Bioinformatics"],
             "BCA": ["General"],
-            "MBA":["General"]
+            "BBA":["General"],
+            "MBA":["General"],
             "MCA": ["General"],
             "MBA": ["General"],
             "M.Tech": ["General"]

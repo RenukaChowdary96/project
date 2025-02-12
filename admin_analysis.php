@@ -32,20 +32,25 @@ if (!empty($start_date) && !empty($end_date)) $query .= " AND date BETWEEN '$sta
 $result = $conn->query($query);
 
 // Data storage for chart
-$data = [];
+$data = array_fill(1, 9, []);  // Initialize array for Questions 1-9
 $suggestions = [];
 
 // Fetch results
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         for ($i = 1; $i <= 9; $i++) {
-            $data[$i][] = $row["question$i"];
+            if (!empty($row["question$i"])) {
+                $data[$i][] = $row["question$i"];
+            }
         }
-        $suggestions[] = $row['question10'];
+        if (!empty($row['question10'])) {
+            $suggestions[] = $row['question10'];
+        }
     }
-} else {
-    echo "<p>No feedback found for the selected criteria.</p>";
 }
+
+// Debugging: Log data to console properly
+echo "<script>console.log('Fetched Data:', " . json_encode($data, JSON_HEX_TAG) . ");</script>";
 
 $conn->close();
 ?>
@@ -65,27 +70,31 @@ $conn->close();
         google.charts.setOnLoadCallback(drawCharts);
 
         function drawCharts() {
+            console.log("Charts are loading...");
+
             <?php for ($i = 1; $i <= 9; $i++): ?>
-                var data<?php echo $i; ?> = google.visualization.arrayToDataTable([
-                    ['Response', 'Count'],
-                    <?php
-                        if (!empty($data[$i])) {
+                <?php if (!empty($data[$i])): // Only render if data exists ?>
+                    var data<?php echo $i; ?> = google.visualization.arrayToDataTable([
+                        ['Response', 'Count'],
+                        <?php
                             $counts = array_count_values($data[$i]);
                             foreach ($counts as $response => $count) {
-                                echo "['$response', $count],";
+                                echo "['" . addslashes($response) . "', $count],";
                             }
-                        }
-                    ?>
-                ]);
+                        ?>
+                    ]);
 
-                var options<?php echo $i; ?> = {
-                    title: 'Question <?php echo $i; ?> Feedback',
-                    is3D: true,
-                    pieSliceText: 'value',
-                };
+                    var options<?php echo $i; ?> = {
+                        title: 'Question <?php echo $i; ?> Feedback',
+                        is3D: true,
+                        pieSliceText: 'value',
+                    };
 
-                var chart<?php echo $i; ?> = new google.visualization.PieChart(document.getElementById('chart<?php echo $i; ?>'));
-                chart<?php echo $i; ?>.draw(data<?php echo $i; ?>, options<?php echo $i; ?>);
+                    var chart<?php echo $i; ?> = new google.visualization.PieChart(document.getElementById('chart<?php echo $i; ?>'));
+                    chart<?php echo $i; ?>.draw(data<?php echo $i; ?>, options<?php echo $i; ?>);
+                <?php else: ?>
+                    document.getElementById('chart<?php echo $i; ?>').innerHTML = "<p>No data available for Question <?php echo $i; ?>.</p>";
+                <?php endif; ?>
             <?php endfor; ?>
         }
     </script>
