@@ -63,47 +63,50 @@ $conn->close();
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     
     <script type="text/javascript">
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawCharts);
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawCharts);
 
-        function drawCharts() {
-            console.log("Charts are loading...");
+    function drawCharts() {
+        <?php for ($i = 1; $i <= 9; $i++): ?>
+            var data<?php echo $i; ?> = google.visualization.arrayToDataTable([
+                ['Response', 'Count'],
+                <?php
+                    if (!empty($data[$i])) {
+                        $counts = array_count_values($data[$i]);
+                        foreach ($counts as $response => $count) {
+                            echo "['$response', $count],";
+                        }
+                    }
+                ?>
+            ]);
 
-            <?php for ($i = 1; $i <= 9; $i++): ?>
-                <?php if (!empty($data[$i])): ?>
-                    var data<?php echo $i; ?> = google.visualization.arrayToDataTable([
-                        ['Response', 'Count'],
-                        <?php
-                            $counts = array_count_values($data[$i]);
-                            foreach ($counts as $response => $count) {
-                                echo "['" . addslashes($response) . "', $count],";
-                            }
-                        ?>
-                    ]);
+            var colorMap = {
+                'Excellent': '#2ecc71', // Green
+                'Good': '#3498db', // Blue
+                'Fair': '#f1c40f', // Yellow
+                'Poor': '#e74c3c' // Red
+            };
 
-                    var colors = {
-                        'Excellent': '#2ecc71', // Green
-                        'Good': '#3498db', // Blue
-                        'Fair': '#f1c40f', // Yellow
-                        'Poor': '#e74c3c', // Red
-                        'Neutral': '#95a5a6' // Gray (default for unknown values)
-                    };
+            var chartColors = [];
+            for (var j = 0; j < data<?php echo $i; ?>.getNumberOfRows(); j++) {
+                var label = data<?php echo $i; ?>.getValue(j, 0);
+                chartColors.push(colorMap[label] || '#888888'); // Assign color based on response
+            }
 
-                    var options<?php echo $i; ?> = {
-                        title: 'Question <?php echo $i; ?> Feedback',
-                        is3D: true,
-                        pieSliceText: 'value',
-                        colors: Object.keys(colors).map(key => colors[key])
-                    };
+            var options<?php echo $i; ?> = {
+                title: 'Question <?php echo $i; ?> Feedback',
+                is3D: true,
+                pieSliceText: 'value',
+                slices: chartColors.map((color, index) => ({offset: 0.1, color})), // Assign dynamic colors
+                colors: chartColors
+            };
 
-                    var chart<?php echo $i; ?> = new google.visualization.PieChart(document.getElementById('chart<?php echo $i; ?>'));
-                    chart<?php echo $i; ?>.draw(data<?php echo $i; ?>, options<?php echo $i; ?>);
-                <?php else: ?>
-                    document.getElementById('chart<?php echo $i; ?>').innerHTML = "<p>No data available for Question <?php echo $i; ?>.</p>";
-                <?php endif; ?>
-            <?php endfor; ?>
-        }
-    </script>
+            var chart<?php echo $i; ?> = new google.visualization.PieChart(document.getElementById('chart<?php echo $i; ?>'));
+            chart<?php echo $i; ?>.draw(data<?php echo $i; ?>, options<?php echo $i; ?>);
+        <?php endfor; ?>
+    }
+</script>
+
 
     <style>
         body {

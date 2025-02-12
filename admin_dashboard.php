@@ -114,6 +114,7 @@
             <option value="">Select Branch</option>
             <option value="B.Tech">B.Tech</option>
             <option value="BCA">BCA</option>
+            <option value="BBA">BBA</option>
             <option value="MCA">MCA</option>
             <option value="MBA">MBA</option>
             <option value="M.Tech">M.Tech</option>
