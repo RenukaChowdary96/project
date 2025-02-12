@@ -80,7 +80,7 @@ const placeList = [
             "info": "The Institute has a spacious and comfortable Guest House on the campus. The Guest House includes 40 A/C executive rooms, 2 dining halls, and a reception hall. Furnished with A/C Suites, television with DTH connection, and WiFi connectivity.",
             "url": "guesthouse.jpeg",
             "address": "Beside U block",
-            "formUrl": "http://localhost/project/feedback_playground.html"
+            "formUrl": "http://localhost/project/feedback_guesthouse.html"
         }
     },
     {

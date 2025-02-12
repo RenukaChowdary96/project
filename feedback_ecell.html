@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Cell Feedback Form</title>
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+
+    <form action="submit_feedback.php" method="POST">
+        <input type="hidden" name="stakeholderType" id="stakeholderType">
+        <input type="hidden" name="academicYear" id="academicYear">
+        <input type="hidden" name="specialization" id="specialization">
+        <input type="hidden" name="branch" id="branch">
+        <input type="hidden" name="date" id="date">
+        <input type="hidden" name="location" id="location">
+
+        <h2>E-Cell Feedback Form</h2>
+
+        <!-- Question 1 -->
+        <div class="question">
+            <label>1. How satisfied are you with the events organized by the E-Cell?</label>
+            <input type="radio" name="question1" value="Poor" required> Poor
+            <input type="radio" name="question1" value="Fair"> Fair
+            <input type="radio" name="question1" value="Good"> Good
+            <input type="radio" name="question1" value="Excellent"> Excellent
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question">
+            <label>2. How well did the E-Cell events help you understand entrepreneurship?</label>
+            <input type="radio" name="question2" value="Poor" required> Poor
+            <input type="radio" name="question2" value="Fair"> Fair
+            <input type="radio" name="question2" value="Good"> Good
+            <input type="radio" name="question2" value="Excellent"> Excellent
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question">
+            <label>3. Were the speakers at E-Cell events knowledgeable and engaging?</label>
+            <input type="radio" name="question3" value="Poor" required> Poor
+            <input type="radio" name="question3" value="Fair"> Fair
+            <input type="radio" name="question3" value="Good"> Good
+            <input type="radio" name="question3" value="Excellent"> Excellent
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question">
+            <label>4. How would you rate the networking opportunities provided by the E-Cell?</label>
+            <input type="radio" name="question4" value="Poor" required> Poor
+            <input type="radio" name="question4" value="Fair"> Fair
+            <input type="radio" name="question4" value="Good"> Good
+            <input type="radio" name="question4" value="Excellent"> Excellent
+        </div>
+
+        <!-- Question 5 -->
+        <div class="question">
+            <label>5. How effective are the E-Cell workshops in helping you develop entrepreneurial skills?</label>
+            <input type="radio" name="question5" value="Poor" required> Poor
+            <input type="radio" name="question5" value="Fair"> Fair
+            <input type="radio" name="question5" value="Good"> Good
+            <input type="radio" name="question5" value="Excellent"> Excellent
+        </div>
+
+        <!-- Question 6 -->
+        <div class="question">
+            <label>6. Do you feel that the E-Cell provides sufficient support for student startups?</label>
+            <input type="radio" name="question6" value="Poor" required> Poor
+            <input type="radio" name="question6" value="Fair"> Fair
+            <input type="radio" name="question6" value="Good"> Good
+            <input type="radio" name="question6" value="Excellent"> Excellent
+        </div>
+
+        <!-- Question 7 -->
+        <div class="question">
+            <label>7. How likely are you to recommend E-Cell events to other students?</label>
+            <input type="radio" name="question7" value="Poor" required> Poor
+            <input type="radio" name="question7" value="Fair"> Fair
+            <input type="radio" name="question7" value="Good"> Good
+            <input type="radio" name="question7" value="Excellent"> Excellent
+        </div>
+
+        <!-- Question 8 -->
+        <div class="question">
+            <label>8. How would you rate the communication and coordination of E-Cell events?</label>
+            <input type="radio" name="question8" value="Poor" required> Poor
+            <input type="radio" name="question8" value="Fair"> Fair
+            <input type="radio" name="question8" value="Good"> Good
+            <input type="radio" name="question8" value="Excellent"> Excellent
+        </div>
+
+        <!-- Question 9 -->
+        <div class="question">
+            <label>9. How would you rate the overall impact of the E-Cell on student entrepreneurship?</label>
+            <input type="radio" name="question9" value="Poor" required> Poor
+            <input type="radio" name="question9" value="Fair"> Fair
+            <input type="radio" name="question9" value="Good"> Good
+            <input type="radio" name="question9" value="Excellent"> Excellent
+        </div>
+
+        <!-- Question 10 -->
+        <div class="question">
+            <label>10. Any additional feedback or comments regarding the E-Cell?</label>
+            <textarea name="question10" rows="4" required></textarea>
+        </div>
+
+        <input type="submit" value="Submit Feedback">
+    </form>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const location = localStorage.getItem("selectedLocation");
+            const date = localStorage.getItem("feedbackDate");
+
+            console.log("Stored Location:", location);
+            console.log("Stored Date:", date);
+
+            if (!location || location === "null" || location.trim() === "") {
+                alert("🚨 Missing Location! Please go back and select a location.");
+                window.location.href = "index.html";
+                return;
+            }
+
+            if (!date || date === "null" || date.trim() === "") {
+                alert("🚨 Missing Date! Please go back and try again.");
+                window.location.href = "index.html";
+                return;
+            }
+
+            document.getElementById("stakeholderType").value = localStorage.getItem("stakeholderType") || "";
+            document.getElementById("academicYear").value = localStorage.getItem("academicYear") || "";
+            document.getElementById("branch").value = localStorage.getItem("branch") || "";
+            document.getElementById("specialization").value = localStorage.getItem("specialization") || "";
+            document.getElementById("date").value = date;
+            document.getElementById("location").value = location;
+        });
+    </script>
+
+</body>
+</html>

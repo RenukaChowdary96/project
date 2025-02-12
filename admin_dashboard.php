@@ -122,7 +122,7 @@
 
         <label for="specialization">Specialization:</label>
         <select name="specialization" id="specialization">
-            <option value="">All Specializations</option>
+          
         </select>
 
         <label for="start_date">Start Date:</label>
@@ -137,7 +137,7 @@
     <script>
         // Define available specializations
         const specializationOptions = {
-            "B.Tech": ["CSE", "IT", "EEE", "ECE", "Mechanical", "Robotics", "Biotechnology", "Bioinformatics"],
+            "B.Tech": ["CSE", "IT", "EEE", "ECE", "Mechanical", "Civil", "Biotech", "FoodTech","Bioinformatics"],
             "BCA": ["General"],
             "BBA":["General"],
             "MBA":["General"],
