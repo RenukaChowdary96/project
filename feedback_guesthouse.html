@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css"> 
 </head>
 <body>
+
     <form action="submit_feedback.php" method="POST">
         <input type="hidden" name="stakeholderType" id="stakeholderType">
         <input type="hidden" name="academicYear" id="academicYear">
@@ -18,7 +19,7 @@
         <h2>Guest House Feedback Form</h2>
 
         <div class="question">
-            <label>1. How would you rate the cleanliness and hygiene of the guest house?</label><br>
+            <label>1. How would you rate the cleanliness and hygiene of the guest house?</label>
             <input type="radio" name="question1" value="Poor" required> Poor
             <input type="radio" name="question1" value="Fair"> Fair
             <input type="radio" name="question1" value="Good"> Good
@@ -26,7 +27,7 @@
         </div>
 
         <div class="question">
-            <label>2. How comfortable were the rooms and bedding?</label><br>
+            <label>2. How comfortable were the rooms and bedding?</label>
             <input type="radio" name="question2" value="Poor" required> Poor
             <input type="radio" name="question2" value="Fair"> Fair
             <input type="radio" name="question2" value="Good"> Good
@@ -34,7 +35,7 @@
         </div>
 
         <div class="question">
-            <label>3. How would you rate the availability of basic amenities (Wi-Fi, AC, hot water, etc.)?</label><br>
+            <label>3. How would you rate the availability of basic amenities (Wi-Fi, AC, hot water, etc.)?</label>
             <input type="radio" name="question3" value="Poor" required> Poor
             <input type="radio" name="question3" value="Fair"> Fair
             <input type="radio" name="question3" value="Good"> Good
@@ -42,7 +43,7 @@
         </div>
 
         <div class="question">
-            <label>4. Was the check-in and check-out process smooth and hassle-free?</label><br>
+            <label>4. Was the check-in and check-out process smooth and hassle-free?</label>
             <input type="radio" name="question4" value="Poor" required> Poor
             <input type="radio" name="question4" value="Fair"> Fair
             <input type="radio" name="question4" value="Good"> Good
@@ -50,7 +51,7 @@
         </div>
 
         <div class="question">
-            <label>5. How would you rate the behavior and responsiveness of the staff?</label><br>
+            <label>5. How would you rate the behavior and responsiveness of the staff?</label>
             <input type="radio" name="question5" value="Poor" required> Poor
             <input type="radio" name="question5" value="Fair"> Fair
             <input type="radio" name="question5" value="Good"> Good
@@ -58,7 +59,7 @@
         </div>
 
         <div class="question">
-            <label>6. Was the guest house environment peaceful and conducive to a comfortable stay?</label><br>
+            <label>6. Was the guest house environment peaceful and conducive to a comfortable stay?</label>
             <input type="radio" name="question6" value="Poor" required> Poor
             <input type="radio" name="question6" value="Fair"> Fair
             <input type="radio" name="question6" value="Good"> Good
@@ -66,7 +67,7 @@
         </div>
 
         <div class="question">
-            <label>7. How would you rate the quality of food provided (if any)?</label><br>
+            <label>7. How would you rate the quality of food provided (if any)?</label>
             <input type="radio" name="question7" value="Poor" required> Poor
             <input type="radio" name="question7" value="Fair"> Fair
             <input type="radio" name="question7" value="Good"> Good
@@ -74,7 +75,7 @@
         </div>
 
         <div class="question">
-            <label>8. Was the security of the guest house adequate?</label><br>
+            <label>8. Was the security of the guest house adequate?</label>
             <input type="radio" name="question8" value="Poor" required> Poor
             <input type="radio" name="question8" value="Fair"> Fair
             <input type="radio" name="question8" value="Good"> Good
@@ -82,7 +83,7 @@
         </div>
 
         <div class="question">
-            <label>9. Would you recommend the guest house to other visitors?</label><br>
+            <label>9. Would you recommend the guest house to other visitors?</label>
             <input type="radio" name="question9" value="Poor" required> Poor
             <input type="radio" name="question9" value="Fair"> Fair
             <input type="radio" name="question9" value="Good"> Good
@@ -90,8 +91,8 @@
         </div>
 
         <div class="question">
-            <label for="question10">10. What improvements do you suggest for the guest house?</label><br>
-            <textarea name="question10" id="suggestions" rows="3" required></textarea>
+            <label>10. What improvements do you suggest for the guest house?</label>
+            <textarea name="question10" rows="3" required></textarea>
         </div>
 
         <input type="submit" value="Submit Feedback">
@@ -125,5 +126,6 @@
             document.getElementById("location").value = location;
         });
     </script>
+
 </body>
-</html> 
+</html>
